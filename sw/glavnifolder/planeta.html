@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Star Wars API">
+    <meta name="keywords" content="star wars, API, find informations, characters, planets, starships, vehicles, species">
+    <meta name="author" content="Dusan Randjelovic | dusanrandjelovic92@gmail.com">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <title>Star Wars API | Find informations about SW planets | Dusan Randjelovic</title>
+    <style>
+    body {
+      margin: 0;
+      box-sizing: border-box;
+      color: white;
+    }
+    .navbar-brand img {
+      height: 50px;
+      width: 55px;
+    }
+    input:focus, button:focus {
+    outline: none;
+    }
+    main {
+    background-attachment: fixed;
+    width: 100%;
+    min-height: 100vh;
+    background-position: top;
+    background-image: linear-gradient(to left, rgba(67,67,67,.7), rgba(0,0,0,.7)), url(robot.jpg);
+    background-size: cover;
+    z-index: -1000;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .potraga {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      padding: 3%;
+      margin: auto;
+      border-bottom: 1px solid black;
+    }
+    #ispis {
+      text-align: center;
+      padding-bottom: 5%;
+    }
+    #ispis h1 {
+      margin-top: 7%;
+    }
+    #dugme {
+      border: 1px solid white;
+      background-color:inherit;
+      color: white;
+      letter-spacing: 0.04em;
+      margin-top: 20px;
+      padding: 8px 14px;
+      transition: 0.5s;
+    }
+    #dugme:hover {
+      text-transform: uppercase;
+      cursor: pointer;
+      background: black;
+      opacity: 0.8;
+    transition: 0.5s;
+    }
+    #dugme:active {
+      animation-name: efekat;
+      animation-duration: 500ms;
+      animation-fill-mode: forwards;
+    }
+    @keyframes efekat {
+      100% {
+        padding: 12px;
+      }
+    }
+    input {
+      color: white;
+      background-color: inherit;
+      padding: 8px;
+    }
+    #animacija {
+      animation-name: boja;
+      animation-duration: 3.6s;
+    }
+    @keyframes boja {
+      0% {
+        color: DarkTurquoise;
+      }
+      50% {
+        color: LightCyan;
+        letter-spacing: 0.03em;
+      }
+      100% {
+        color: Goldenrod;
+      }
+    }
+
+    li {
+      list-style-type: none;
+
+    }
+    .plus {
+      width: 198px;
+      margin-top: -16px;
+      padding-top: 1%;
+      border-bottom: 1px solid white;
+    }
+    .plus a {
+      text-decoration: none;
+      font-size: 24px;
+      color: white;
+    }
+    .plus a:hover {
+      color: saddlebrown;
+
+    }
+
+    .podstrane {
+      display: none;
+      position: absolute;
+      background: -webkit-linear-gradient(saddlebrown, gray);
+      min-width: 198px;
+      box-shadow: 0px 8px 16px 0px rgba(10,10,10,0.6);
+      z-index: 1;
+    }
+    .podstrane a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      font-size: 16px;
+    }
+    .podstrane a:hover {
+      background-color: white;
+      color: saddlebrown;
+      text-transform: uppercase;
+
+    }
+
+    .plus:hover .podstrane {
+      display: block;
+      opacity: 0.8;
+    }
+
+    @media (min-width: 748px){
+      .potraga {
+        width: 39%;
+      }
+      #dugme {
+        width: 105px;
+        margin: 18px auto;
+      }
+      #ispis {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 7%;
+      }
+      #ispis h1 {
+        margin-top: auto;
+      }
+    }
+    /*main {
+      background-image: linear-gradient(to bottom right,black,gray), url(robot.jpg);
+      background-size: cover;
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      opacity: 0.9;
+    }*/
+    /*main:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right,black,gray);
+    opacity: .6;
+    }*/
+
+</style>
+  </head>
+  <body>
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <a class="navbar-brand" href="../../index.html"><img src="../../hahatrans.png" alt="Dusan Logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample04">
+                  <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                    <a class="nav-link" href="https://dusanrandjelovicportfolio.000webhostapp.com" target="_blank">Dusan Randjelovic Design</a>
+                    </li>
+
+                  </ul>
+                  <form class="form-inline my-2 my-md-0">
+                    <ul class="navbar-nav mr-auto">
+
+                            <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Star Wars</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                      <a class="dropdown-item" href="index.html">Characters</a>
+                                      <a class="dropdown-item" href="planeta.html">Planets</a>
+                                        <a class="dropdown-item" href="vozilo.html">Vehicles</a>
+                                      <a class="dropdown-item" href="brod.html">Ships</a>
+                                        <a class="dropdown-item" href="vrsta.html">Species</a>
+                                    </div>
+                                  </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Songs</a>
+                              <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="../../song/glavnifolder/index.html">Find lyrics</a>
+                                <a class="dropdown-item" href="../../song/glavnifolder/sugestije.html">Find song</a>
+                              </div>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="nav-link" href="../../weather/index.html">Weather</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="../../news/index.html">News</a>
+                                  </li>
+                          </ul>
+                  </form>
+                </div>
+              </nav>
+</header>
+
+    <main>
+      <ul>
+      <li class="plus"><a href="#">Find more</a>
+       <div class="podstrane">
+         <a href="brod.html">Starships</a>
+         <a href="index.html">Characters</a>
+         <a href="vozilo.html">Vehicles</a>
+         <a href="vrsta.html">Species</a>
+       </div>
+      </li>
+      </ul>
+      <div class="potraga">
+    <h2 id="animacija">Find informations about Star Wars planets</h2>
+    <input id="polje">
+    <button id="dugme">Find</button>
+    </div>
+    <div id="ispis">
+      </div>
+
+    </main>
+        <script src="planeta.js"></script>
+  </body>
+</html>

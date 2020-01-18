@@ -1,0 +1,70 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+   /* background: linear-gradient(rgb(47,150,163), rgb(48,62,163)); */
+   background-color: whitesmoke;
+    height: 120vh;
+    color: black;
+}
+.navbar-brand img {
+  height: 50px;
+  width: 55px;
+}
+main {
+  margin-top: 40px;
+}
+#prvideo {
+    display: flex;
+    justify-content: center;
+    padding: 2% 0;
+}
+input {
+    padding: 12px;
+}
+button {
+    margin-left: 0.5%;
+    background-color: blue;
+    padding: 10px 16px;
+    color:  white;
+    border-radius: 8px;
+    border-width: inherit;
+}
+
+#drugideo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 7% 0;
+}
+.grad {
+    color: red;
+    font-size: 35px;
+}
+#podacilevo {
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+
+/*#trecideo {
+    display: flex;
+    justify-content: space-around;
+    padding: 3% 0;
+    border: 1px solid green;
+}*/
+section div{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#sutra{
+    display: flex;
+    flex-direction: column;
+}
+
+@media(max-width: 550px){
+    #drugideo {
+        flex-direction: column;
+    }
+}
